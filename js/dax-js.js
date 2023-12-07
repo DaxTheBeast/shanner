@@ -7,7 +7,6 @@
 //=================================SPECIAL OFFER===================================//
 
 var specOffer = document.getElementById('spec-offer')
-specOffer.textContent = 'Free Shipping for products above 100$'
 
 //====================================NAV BAR======================================//
 // Definišemo podatke za meni
@@ -93,14 +92,14 @@ var menuData = [
 
 var shopData = [
     { imageUrl: 'images/card-large-item1.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item2.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item3.jpg', title: 'Running shoes for men', price: '$79' },
+    { imageUrl: 'images/card-large-item2.jpg', title: 'Running shoes for men', price: '$119' },
+    { imageUrl: 'images/card-large-item3.jpg', title: 'Running shoes for men', price: '$279' },
     { imageUrl: 'images/card-large-item4.jpg', title: 'Running shoes for men', price: '$79' },
     { imageUrl: 'images/card-large-item5.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item6.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item7.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item8.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item9.jpg', title: 'Running shoes for men', price: '$79' }
+    { imageUrl: 'images/card-large-item6.jpg', title: 'Running shoes for men', price: '$39' },
+    { imageUrl: 'images/card-large-item7.jpg', title: 'Running shoes for men', price: '$69' },
+    { imageUrl: 'images/card-large-item8.jpg', title: 'Running shoes for men', price: '$89' },
+    { imageUrl: 'images/card-large-item9.jpg', title: 'Running shoes for men', price: '$99' }
 ]
 
 // Funkcija za dinamicko kreiranje bloka featured products
@@ -281,76 +280,45 @@ function unistiPorukicu(){
 //================================SHOW MODAL FUNCTION=================================//
 
 var dugmadKreiranja = document.querySelectorAll('.prikaziModalDugme')
+
 dugmadKreiranja.forEach(element => {
     element.addEventListener('click', function(event) {
-        kreirajModal(event.target, 'Asad', '$99')
+      if(event.target.id)
+      {
+        kreirajModal((event.target.id).substring(10))
+      }
+      else
+      {
+        kreirajModal((event.target.parentElement.id).substring(10))
+      }
     });
 });
 
-function kreirajModal(element, naslov, cena){
+function kreirajModal(element){
     var modalBody = document.getElementById('modal-body-id')
-    console.log(element)
+
     modalBody.innerHTML = `
     <div class="col-lg-12 col-md-12 me-3">
     <div class="image-holder">
-      <img src="images/summary-item1.jpg" alt="Shoes">
+      <img src="${shopData[element].imageUrl}" alt="Shoes" width="465" height="450">
     </div>
   </div>
   <div class="col-lg-12 col-md-12">
     <div class="summary">
       <div class="summary-content fs-6">
         <div class="product-header d-flex justify-content-between mt-4">
-          <h3 class="display-7">${naslov}</h3>
+          <h3 class="display-7">${shopData[element].title}</h3>
           <div class="modal-close-btn">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
           </div>
         </div>
-        <span class="product-price fs-3">${cena}</span>
+        <span class="product-price fs-3">${shopData[element].price}</span>
         <div class="product-details">
           <p class="fs-7">Buy good shoes and a good mattress, because when you're not in one you're in the
             other. With four pairs of shoes, I can travel the world.</p>
         </div>
-        <ul class="select">
-          <li>
-            <strong>Colour Shown:</strong> Red, White, Black
-          </li>
-          <li>
-            <strong>Style:</strong> SM3018-100
-          </li>
-          <li id="greska_modal" class="d-none">
-            <strong class="text-danger">Greska: </strong><span id="opis_greske_modal"></span>
-          </li>
-        </ul>
-        <div class="variations-form shopify-cart">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="quantity d-flex pb-4">
-                <div id="modal-add"
-                  class="qty-number align-top qty-number-plus d-flex justify-content-center align-items-center text-center">
-                  <span class="increase-qty plus">
-                    <svg class="plus">
-                      <use xlink:href="#plus"></use>
-                    </svg>
-                  </span>
-                </div>
-                <input type="number" id="quantity_001" class="input-text text-center" step="1" min="1" name="quantity" value="0" title="Qty">
-                <div id="modal-back"
-                  class="qty-number qty-number-minus d-flex justify-content-center align-items-center text-center">
-                  <span class="increase-qty minus">
-                    <svg class="minus">
-                      <use xlink:href="#minus"></use>
-                    </svg>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <a rel="nofollow" data-no-instant="" href="#" class="out-stock button">Out of stock</a>
-              <button type="submit" id="btn_modal" class="btn btn-medium btn-black hvr-sweep-to-right">Add to cart</button>
-            </div>
-          </div>
-        </div>
+
         <!-- variations-form -->
         <div class="categories d-flex flex-wrap pt-3">
           <strong class="pe-2">Categories:</strong>
@@ -472,4 +440,40 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('The countdown has ended!');
     });
 
+});
+
+//==================================PRIMENA SNEGA===================================//
+
+function prikaziElement() {
+  var danas = new Date();
+  var pocetniDatum = new Date(danas.getFullYear(), 11, 1); // 11 predstavlja decembar jer se meseci numerišu od 0 do 11
+  var zavrsniDatum = new Date(danas.getFullYear() + 1, 0, 30); // 0 predstavlja januar
+
+  if (danas >= pocetniDatum && danas <= zavrsniDatum) {
+      specOffer.textContent = 'Happy Xmas and New Year! Free Shipping'
+
+      // Prikazi element ako je trenutni datum između 1. decembra i 30. januara
+      $("#elementZaPrikaz").show();
+      
+      // Učitaj skriptu za sneg
+      ucitajSkriptu("https://cdn.jsdelivr.net/npm/christmas-snow-3d/build/snow3d.js");
+  } else {
+      // Sakrij element ako trenutni datum nije u tom opsegu
+      specOffer.textContent = 'Free Shipping above 100$'
+  }
+}
+
+// Funkcija za dinamičko učitavanje skripte
+function ucitajSkriptu(src) {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = src;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+// Pozovi funkciju prilikom učitavanja stranice i prilikom promene datuma
+$(document).ready(function () {
+  prikaziElement();
+  setInterval(prikaziElement, 60000);
 });
