@@ -124,7 +124,9 @@ shopData.forEach(element => {
                 </svg>
                 </button>
                 <button type="button" class="btn btn-light prikaziModalDugme" data-bs-target="#modaltoggle" data-bs-toggle="modal" id='shopButton${buttonCounter}'>
-                <i class="zmdi zmdi-search"></i>
+                <svg class="quick-view">
+                        <use xlink:href="#quick-view"></use>
+                      </svg>
                 </button>
             </div>
             </div>
@@ -169,20 +171,6 @@ products.forEach(element => {
     <div class="product-card position-relative">
         <div class="card-img">
         <img src="${element.imageUrl}" alt="product-item" class="product-image img-fluid">
-        <div class="cart-concern position-absolute d-flex justify-content-center">
-            <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modallong">
-                <svg class="shopping-carriage">
-                <use xlink:href="#shopping-carriage"></use>
-                </svg>
-            </button>
-            <button type="button" class="btn btn-light prikaziModalDugme" data-bs-target="#modaltoggle" data-bs-toggle="modal">
-                <svg class="quick-view">
-                <use xlink:href="#quick-view"></use>
-                </svg>
-            </button>
-            </div>
-        </div>
         </div>
         <div class="card-detail d-flex justify-content-between align-items-center mt-3">
         <h3 class="card-title fs-6 fw-normal m-0">
@@ -200,6 +188,36 @@ products.forEach(element => {
 
 // Pozivanje funkcije za generisanje produkata
 generateProductCards();
+
+// Funkcija za dinamicko kreiranje bloka featured products
+function generateProductCardsLP() {
+  var productContainerLP = document.getElementById('product-container-lp');
+  
+  // Petlja koja pravi html sadrzaj i ubacije u productCard
+  products.findLast(element => {
+      var productCardLP = document.createElement('div');
+      productCardLP.className = 'col mb-4 mb-3';
+      productCardLP.innerHTML = `
+      <div class="product-card position-relative">
+          <div class="card-img">
+          <img src="${element.imageUrl}" alt="product-item" class="product-image img-fluid">
+          </div>
+          <div class="card-detail d-flex justify-content-between align-items-center mt-3">
+          <h3 class="card-title fs-6 fw-normal m-0">
+              <a href="single-product.html">${element.title}</a>
+          </h3>
+          <span class="card-price fw-bold">${element.price}</span>
+          </div>
+      </div>
+      `;
+  
+      // 
+      productContainerLP.appendChild(productCardLP);
+  });
+  }
+  
+  // Pozivanje funkcije za generisanje produkata
+  generateProductCardsLP();
 
 //Dodavanje kolicine u modalu
 var dodaj_modal_broj = document.getElementById('modal-add');
@@ -251,7 +269,7 @@ function poruci() {
   
   function sakrijLoading() {
     loading_store.classList.remove('d-block'); loading_store.classList.add('d-none')
-    stvoriPorukicu('Upesno ste ubacili proizvod u korpu!', 1, 5);
+    stvoriPorukicu('You have successfully added the product to the basket!', 1, 5);
   }
   
 
@@ -414,7 +432,7 @@ function proveraRE(){
     }
     if(!nrFLN && !nrAddress && !nrEmail && !nrPhone && !nrPW)
     {
-      stvoriPorukicu('Uspesno ste kreirali nalog :)', 1, 5)
+      stvoriPorukicu('You have successfully created an account :)', 1, 5)
       $('#modalregister').modal('hide');
     }
 }
@@ -476,4 +494,37 @@ function ucitajSkriptu(src) {
 $(document).ready(function () {
   prikaziElement();
   setInterval(prikaziElement, 60000);
+});
+
+//====================================SCROLL===========================================//
+
+$(document).on("ready", function() {
+
+  function scrollToAnchor(aid){
+      const destination = $("a[name='"+ aid +"']");
+      $('html,body').animate({
+          scrollTop: destination.offset().top
+      },'slow');
+  }
+
+  $(document).on('click', '.smooth-link', function(){
+      scrollToAnchor('shop');
+  });
+});
+
+$(document).ready(function() {
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 300) {
+      $('#toTopBtn').fadeIn();
+    } else {
+      $('#toTopBtn').fadeOut();
+    }
+  });
+
+  $('#toTopBtn').click(function() {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 1000);
+    return false;
+  });
 });
