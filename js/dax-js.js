@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //==================================PRIMENA SNEGA===================================//
-
+/*
 function prikaziElement() {
   var danas = new Date();
   var pocetniDatum = new Date(danas.getFullYear(), 11, 1); // 11 predstavlja decembar jer se meseci numerišu od 0 do 11
@@ -494,7 +494,7 @@ function ucitajSkriptu(src) {
 $(document).ready(function () {
   prikaziElement();
   setInterval(prikaziElement, 60000);
-});
+});*/
 
 //====================================SCROLL===========================================//
 
