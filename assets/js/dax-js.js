@@ -86,15 +86,15 @@ window.onload = function(){
 if(url=='/shanner/index.html'){
 
 var shopData = [
-    { imageUrl: 'images/card-large-item1.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item2.jpg', title: 'Running shoes for men', price: '$119' },
-    { imageUrl: 'images/card-large-item3.jpg', title: 'Running shoes for men', price: '$279' },
-    { imageUrl: 'images/card-large-item4.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item5.jpg', title: 'Running shoes for men', price: '$79' },
-    { imageUrl: 'images/card-large-item6.jpg', title: 'Running shoes for men', price: '$39' },
-    { imageUrl: 'images/card-large-item7.jpg', title: 'Running shoes for men', price: '$69' },
-    { imageUrl: 'images/card-large-item8.jpg', title: 'Running shoes for men', price: '$89' },
-    { imageUrl: 'images/card-large-item9.jpg', title: 'Running shoes for men', price: '$99' }
+    { imageUrl: 'assets/images/card-large-item1.jpg', title: 'Running shoes for men', price: '$79' },
+    { imageUrl: 'assets/images/card-large-item2.jpg', title: 'Running shoes for men', price: '$119' },
+    { imageUrl: 'assets/images/card-large-item3.jpg', title: 'Running shoes for men', price: '$279' },
+    { imageUrl: 'assets/images/card-large-item4.jpg', title: 'Running shoes for men', price: '$79' },
+    { imageUrl: 'assets/images/card-large-item5.jpg', title: 'Running shoes for men', price: '$79' },
+    { imageUrl: 'assets/images/card-large-item6.jpg', title: 'Running shoes for men', price: '$39' },
+    { imageUrl: 'assets/images/card-large-item7.jpg', title: 'Running shoes for men', price: '$69' },
+    { imageUrl: 'assets/images/card-large-item8.jpg', title: 'Running shoes for men', price: '$89' },
+    { imageUrl: 'assets/images/card-large-item9.jpg', title: 'Running shoes for men', price: '$99' }
 ]
 
 // Funkcija za dinamicko kreiranje bloka featured products
@@ -147,11 +147,11 @@ generateShop();
 
 //================================FEATURED PRODUCTS================================//
 var products = [
-{ imageUrl: 'images/card-item6.jpg', title: 'Running shoes for men', price: '$89' },
-{ imageUrl: 'images/card-item7.jpg', title: 'Running shoes for men', price: '$99' },
-{ imageUrl: 'images/card-item8.jpg', title: 'Running shoes for men', price: '$69' },
-{ imageUrl: 'images/card-item9.jpg', title: 'Walking shoes for men', price: '$49' },
-{ imageUrl: 'images/card-item10.jpg', title: 'Walking shoes for men', price: '$39' }
+{ imageUrl: 'assets/images/card-item6.jpg', title: 'Running shoes for men', price: '$89' },
+{ imageUrl: 'assets/images/card-item7.jpg', title: 'Running shoes for men', price: '$99' },
+{ imageUrl: 'assets/images/card-item8.jpg', title: 'Running shoes for men', price: '$69' },
+{ imageUrl: 'assets/images/card-item9.jpg', title: 'Walking shoes for men', price: '$49' },
+{ imageUrl: 'assets/images/card-item10.jpg', title: 'Walking shoes for men', price: '$39' }
 ];
 
 // Funkcija za dinamicko kreiranje bloka featured products
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
 var swiperDynamic = document.getElementById('swiper-dax')
 for(let i = 1; i < 10; i++)
 {
-  swiperDynamic.innerHTML += ` <div class="swiper-slide"><img class="rounded" src="images/card-item${i}.jpg" alt="Slika ${i}"/></div>`;
+  swiperDynamic.innerHTML += ` <div class="swiper-slide"><img class="rounded" src="assets/images/card-item${i}.jpg" alt="Slika ${i}"/></div>`;
 }
 
 //=============================================
