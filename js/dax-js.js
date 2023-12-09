@@ -7,31 +7,21 @@
 //=================================SPECIAL OFFER===================================//
 
 var specOffer = document.getElementById('spec-offer')
+specOffer.textContent = 'Free shipping on all products over 100$'
 
 //====================================NAV BAR======================================//
 // Definišemo podatke za meni
 var menuData = [
     { label: "Home", link: "#", subMenu: [
         { label: "Home V1", link: "index.html" },
-        { label: "Home V2", link: "home2.html", badge: "PRO" }
+        { label: "Home V2", link: "index.html", badge: "PRO" }
       ]
     },
-    { label: "Men", link: "#" },
-    { label: "Women", link: "#" },
-    { label: "Page", link: "#", subMenu: [
-        { label: "About Us", link: "about-us.html", badge: "PRO" },
-        { label: "Shop", link: "shop.html", badge: "PRO" },
-        { label: "Blog", link: "blog.html", badge: "PRO" },
-        { label: "Single Product", link: "single-product.html", badge: "PRO" },
-        { label: "Single Post", link: "single-post.html", badge: "PRO" },
-        { label: "Styles", link: "styles.html", badge: "PRO" },
-        { label: "Cart", link: "#", modalTarget: "#modallong" },
-        { label: "Login", link: "#", modalTarget: "#modallogin" }
-      ]
-    },
-    { label: "Shop", link: "shop.html" },
-    { label: "Sale", link: "#" },
-    { label: "Get PRO", link: "#", isButton: true, classes: "btn btn-dark rounded-pill" }
+    { label: "Men", link: "#shop" },
+    { label: "Women", link: "#shop" },
+    { label: "Shop", link: "#shop" },
+    { label: "Sale", link: "#shop" },
+    { label: "About Author", link: "about-author.html", isButton: true, classes: "btn btn-dark rounded-pill" }
   ];
   
   // Prikazuje meni
@@ -89,6 +79,11 @@ var menuData = [
   // Pozivamo funkciju za prikaz menija
   generateMenu();
 //=====================================SHOP========================================//
+let url = window.location.pathname;
+url = (url=='/shanner/')?'/shanner/index.html':url;
+// console.log(url);
+window.onload = function(){
+if(url=='/shanner/index.html'){
 
 var shopData = [
     { imageUrl: 'images/card-large-item1.jpg', title: 'Running shoes for men', price: '$79' },
@@ -460,6 +455,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+//==============================SWIPER
+
+var swiper6 = new Swiper(".mySwiper6", {
+  grabCursor: true,
+  effect: "creative",
+  creativeEffect: {
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    prev: {
+      shadow: false,
+      origin: "left center",
+      translate: ["-5%", 0, -200],
+      rotate: [0, 70, 0],
+    },
+    next: {
+      origin: "right center",
+      translate: ["5%", 0, -200],
+      rotate: [0, -70, 0],
+    },
+  },
+});
+
 //==================================PRIMENA SNEGA===================================//
 /*
 function prikaziElement() {
@@ -528,3 +547,6 @@ $(document).ready(function() {
     return false;
   });
 });
+
+  }
+}
