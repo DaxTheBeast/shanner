@@ -586,3 +586,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+//===============================dynamic slider
+
+var swiperDynamic = document.getElementById('swiper-dax')
+for(let i = 1; i < 10; i++)
+{
+  swiperDynamic.innerHTML += ` <div class="swiper-slide"><img class="rounded" src="images/card-item${i}.jpg" alt="Slika ${i}"/></div>`;
+}
+
+//=============================================
