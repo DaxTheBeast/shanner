@@ -976,7 +976,7 @@ a.text-hover:focus:after {
 /* - Login
 /*----------------------------------------------*/
 #modallogin .modal-content {
-  background: url(images/login-bg.jpg)no-repeat;
+  background: url(assets/images/login-bg.jpg)no-repeat;
 }
 
 #modallogin .modal-content input.text-input {
@@ -993,7 +993,7 @@ a.text-hover:focus:after {
 }
 
 #modalregister .modal-content {
-  background: url(images/login-bg.jpg);
+  background: url(assets/images/login-bg.jpg);
 }
 
 #modalregister .modal-content input.text-input {
