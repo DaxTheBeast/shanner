@@ -226,8 +226,6 @@
       <!-- / quick view -->
     
     
-      <!-- cart view -->
-    
       <div class="modal fade" id="modallogin" tabindex="-1" aria-modal="true" role="dialog">
         <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered" role="document">
           <div class="modal-content p-4">
@@ -239,9 +237,13 @@
                 <div class="login-form p-0">
                   <div class="col-lg-12 mx-auto">
                     <form id="login-form">
-                      <input type="text" name="username" placeholder="Username or Email Address *"
-                        class="mb-3 ps-3 text-input">
+    
+                      <label id="ELabelLogin" for="email" class="fs-6 text-danger d-none">* Not good format (Format: dax@grebovich.com)</label>
+                      <input type="email" for="email" name="email" placeholder="Email Address *" class="mb-3 ps-3 text-input">
+    
+                      <label for="password" name="password" id="PWLabelLogin" class="fs-6 text-danger d-none">* Minimum eight characters, at least one letter, one number and one special character:</label>
                       <input type="password" name="password" placeholder="Password" class="ps-3 text-input">
+    
                       <div class="checkbox d-flex justify-content-between mt-4">
                         <p class="checkbox-form">
                           <label class="">
@@ -255,7 +257,7 @@
                   </div>
                 </div>
                 <div class="modal-footer mt-5 d-flex justify-content-center">
-                  <button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">Login</button>
+                  <button type="button" id="LoginSubmit" class="btn btn-red hvr-sweep-to-right dark-sweep">Login</button>
                   <button type="button" id="izLoginURegister"
                     class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Register</button>
                 </div>

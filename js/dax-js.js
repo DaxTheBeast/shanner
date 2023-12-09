@@ -269,27 +269,7 @@ function poruci() {
   
 
 //================================END FEATURED PRODUCTS================================//
-//===================================CORRECT MESSAGE===================================//
 
-var porukicaBox = document.getElementById('porukica')
-var porukicaText = document.getElementById('uspesnoText')
-
-function stvoriPorukicu(tekstUPorukici, tip, time) {
-    porukicaText.textContent = tekstUPorukici;
-    if(tip == 1) { porukicaBox.classList.remove('bg-danger'); porukicaBox.classList.add('bg-success'); }
-    else if(tip == 2) { porukicaBox.classList.remove('bg-success'); porukicaBox.classList.add('bg-danger'); }
-    porukicaBox.classList.remove('d-none')
-    porukicaBox.classList.add('d-block')
-    setTimeout(unistiPorukicu, time*1000);
-}
-function unistiPorukicu(){
-    $(porukicaBox).slideUp(1000, function(){    
-        porukicaBox.classList.remove('d-block')
-        porukicaBox.classList.add('d-none')
-    });
-}
-
-//================================END CORRECT MESSAGE=================================//
 //================================SHOW MODAL FUNCTION=================================//
 
 var dugmadKreiranja = document.querySelectorAll('.prikaziModalDugme')
@@ -347,94 +327,6 @@ function kreirajModal(element){
 
 //==============================END SHOW MODAL FUNCTION===============================//
 
-//==================================REGISTER FORM=====================================//
-
-//Prebacivanje iz register u login modal
-var loginDugmeURegistraciji = document.getElementById('loginProveraDugme')
-var registerDugmeULoginu = document.getElementById('izLoginURegister')
-
-loginDugmeURegistraciji.addEventListener('click', f => {
-  $('#modalregister').modal('hide');
-  $('#modallogin').modal('show'); 
-});
-registerDugmeULoginu.addEventListener('click', f => {
-  $('#modalregister').modal('show');
-  $('#modallogin').modal('hide'); 
-});
-
-//
-
-var reFLname = /^[A-Z][a-z]{2,15}(\s[A-Z][a-z]{2,15})?$/
-var reEmail = /^[a-z][a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-var reAdresa = /^(\w)(\w|\s){5,30}$/
-var reBrTelefona = /^(6[\d]{6,10})|(06[\d]{6,10})$/
-var rePassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-
-var firstname = document.getElementById('fr-firstname')
-var lastname = document.getElementById('fr-lastname')
-var email = document.getElementById('fr-email')
-var adresa = document.getElementById('fr-address')
-var phone = document.getElementById('fr-phone')
-var pw = document.getElementById('fr-password')
-var pwcheck = document.getElementById('fr-password-confirm')
-
-var regprovera = document.getElementById('registracijaProveraDugme')
-var FLNLabel = document.getElementById('FLNLabel')
-var ELabel = document.getElementById('ELabel')
-var ALabel = document.getElementById('LAdresa')
-var PLabel = document.getElementById('LPhone')
-var PWLabel = document.getElementById('PWLabel')
-
-var nrFLN = 0, nrEmail = 0, nrAddress = 0, nrPhone = 0, nrPW = 0;
-regprovera.addEventListener('click', proveraRE)
-
-function proveraRE(){
-    let proveraL = 0, proveraF = 0;
-    if(!reFLname.test(firstname.value))
-    {   proveraF++;
-    } else proveraF = 0;
-    if(!reFLname.test(lastname.value))
-    {  proveraL++;
-    } else proveraL = 0;
-    if(proveraF > 0 || proveraL > 0)
-    {
-        FLNLabel.classList.remove('d-none'); FLNLabel.classList.add('d-block'); nrFLN = 1;
-    }
-    else { FLNLabel.classList.remove('d-block'); FLNLabel.classList.add('d-none'); nrFLN = 0; }
-    if(!reEmail.test(email.value))
-    {
-        ELabel.classList.remove('d-none'); ELabel.classList.add('d-block'); nrEmail = 1;
-    } else { ELabel.classList.remove('d-block'); ELabel.classList.add('d-none'); nrEmail = 0; }
-    if(!reAdresa.test(adresa.value))
-    {
-      ALabel.classList.remove('text-success'); ALabel.classList.add('text-danger', 'fw-bold'); nrAddress = 1;
-    } else { ALabel.classList.remove('text-danger', 'fw-bold'); ALabel.classList.add('text-success'); nrAddress = 0; }
-    if(!reBrTelefona.test(phone.value))
-    {
-      PLabel.classList.remove('text-success'); PLabel.classList.add('text-danger', 'fw-bold'); nrPhone = 1;
-    } else { PLabel.classList.remove('text-danger', 'fw-bold'); PLabel.classList.add('text-success'); nrPhone = 0; }
-    if(!rePassword.test(pw.value))
-    {
-      pw.classList.remove('border-success'); pw.classList.add('border-danger')
-      PWLabel.classList.remove('text-success'); PWLabel.classList.add('text-danger', 'fw-bold'); nrPW = 1;
-    } 
-    else { 
-      PWLabel.classList.remove('text-danger', 'fw-bold'); PWLabel.classList.add('text-success'); 
-      pw.classList.remove('border-danger'); pw.classList.add('border-success'); nrPW = 0;
-      if(pw.value != pwcheck.value){ nrPW = 1;
-        pwcheck.classList.remove('border-success', 'bg-success'); pwcheck.classList.add('border-danger', 'bg-danger')
-      } else { pwcheck.classList.remove('border-danger', 'bg-danger'); pwcheck.classList.add('border-success', 'bg-success'); nrPW = 0; }   
-    }
-    if(!nrFLN && !nrAddress && !nrEmail && !nrPhone && !nrPW)
-    {
-      stvoriPorukicu('You have successfully created an account :)', 1, 5)
-      $('#modalregister').modal('hide');
-    }
-}
-
-
-
-//================================END REGISTER FORM===================================//
 //Timer
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -550,3 +442,148 @@ $(document).ready(function() {
 
   }
 }
+
+//===================================END OF HOME PAGE======================================//
+
+//==================================REGISTER FORM=====================================// ima i malo logina :)
+
+var loginSubmit = document.getElementById('loginSubmit')
+
+var emailLogin = document.getElementById('fr-email-login')
+var passwordLogin = document.getElementById('fr-password-login')
+
+var ELabelLogin = document.getElementById('ELabelLogin')
+var PWLabelLogin = document.getElementById('PWLabelLogin')
+
+LoginSubmit.addEventListener('click', proveraL)
+
+function proveraL(){
+  var nrEmailLogin, nrPWLogin;
+
+  if(!reEmail.test(emailLogin.value))
+  {
+      ELabelLogin.classList.remove('d-none'); ELabelLogin.classList.add('d-block'); nrEmailLogin = 1;
+  } else { ELabelLogin.classList.remove('d-block'); ELabelLogin.classList.add('d-none'); nrEmailLogin = 0; }
+
+  if(!rePassword.test(passwordLogin.value))
+  {
+    passwordLogin.classList.remove('border-success'); passwordLogin.classList.add('border-danger')
+    PWLabelLogin.classList.remove('text-success'); PWLabelLogin.classList.add('text-danger', 'fw-bold'); nrPWLogin = 1;
+  } else { 
+    PWLabelLogin.classList.remove('text-danger', 'fw-bold'); PWLabelLogin.classList.add('text-success'); 
+    passwordLogin.classList.remove('border-danger'); passwordLogin.classList.add('border-success'); nrPWLogin = 0; }
+
+    if(!nrEmailLogin && !nrPWLogin)
+    {
+      stvoriPorukicu('You have successfully logged in :)', 1, 5)
+      $('#modalregister').modal('hide');
+    }
+}
+
+//Prebacivanje iz register u login modal
+var loginDugmeURegistraciji = document.getElementById('loginProveraDugme')
+var registerDugmeULoginu = document.getElementById('izLoginURegister')
+
+loginDugmeURegistraciji.addEventListener('click', f => {
+  $('#modalregister').modal('hide');
+  $('#modallogin').modal('show'); 
+});
+registerDugmeULoginu.addEventListener('click', f => {
+  $('#modalregister').modal('show');
+  $('#modallogin').modal('hide'); 
+});
+
+//
+
+var reFLname = /^[A-Z][a-z]{2,15}(\s[A-Z][a-z]{2,15})?$/
+var reEmail = /^[a-z][a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+var reAdresa = /^(\w)(\w|\s){5,30}$/
+var reBrTelefona = /^(6[\d]{6,10})|(06[\d]{6,10})$/
+var rePassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
+var firstname = document.getElementById('fr-firstname')
+var lastname = document.getElementById('fr-lastname')
+var email = document.getElementById('fr-email')
+var adresa = document.getElementById('fr-address')
+var phone = document.getElementById('fr-phone')
+var pw = document.getElementById('fr-password')
+var pwcheck = document.getElementById('fr-password-confirm')
+
+var regprovera = document.getElementById('registracijaProveraDugme')
+var FLNLabel = document.getElementById('FLNLabel')
+var ELabel = document.getElementById('ELabel')
+var ALabel = document.getElementById('LAdresa')
+var PLabel = document.getElementById('LPhone')
+var PWLabel = document.getElementById('PWLabel')
+
+var nrFLN = 0, nrEmail = 0, nrAddress = 0, nrPhone = 0, nrPW = 0;
+regprovera.addEventListener('click', proveraRE)
+
+function proveraRE(){
+    let proveraL = 0, proveraF = 0;
+    if(!reFLname.test(firstname.value))
+    {   proveraF++;
+    } else proveraF = 0;
+    if(!reFLname.test(lastname.value))
+    {  proveraL++;
+    } else proveraL = 0;
+    if(proveraF > 0 || proveraL > 0)
+    {
+        FLNLabel.classList.remove('d-none'); FLNLabel.classList.add('d-block'); nrFLN = 1;
+    }
+    else { FLNLabel.classList.remove('d-block'); FLNLabel.classList.add('d-none'); nrFLN = 0; }
+    if(!reEmail.test(email.value))
+    {
+        ELabel.classList.remove('d-none'); ELabel.classList.add('d-block'); nrEmail = 1;
+    } else { ELabel.classList.remove('d-block'); ELabel.classList.add('d-none'); nrEmail = 0; }
+    if(!reAdresa.test(adresa.value))
+    {
+      ALabel.classList.remove('text-success'); ALabel.classList.add('text-danger', 'fw-bold'); nrAddress = 1;
+    } else { ALabel.classList.remove('text-danger', 'fw-bold'); ALabel.classList.add('text-success'); nrAddress = 0; }
+    if(!reBrTelefona.test(phone.value))
+    {
+      PLabel.classList.remove('text-success'); PLabel.classList.add('text-danger', 'fw-bold'); nrPhone = 1;
+    } else { PLabel.classList.remove('text-danger', 'fw-bold'); PLabel.classList.add('text-success'); nrPhone = 0; }
+    if(!rePassword.test(pw.value))
+    {
+      pw.classList.remove('border-success'); pw.classList.add('border-danger')
+      PWLabel.classList.remove('text-success'); PWLabel.classList.add('text-danger', 'fw-bold'); nrPW = 1;
+    } 
+    else { 
+      PWLabel.classList.remove('text-danger', 'fw-bold'); PWLabel.classList.add('text-success'); 
+      pw.classList.remove('border-danger'); pw.classList.add('border-success'); nrPW = 0;
+      if(pw.value != pwcheck.value){ nrPW = 1;
+        pwcheck.classList.remove('border-success', 'bg-success'); pwcheck.classList.add('border-danger', 'bg-danger')
+      } else { pwcheck.classList.remove('border-danger', 'bg-danger'); pwcheck.classList.add('border-success', 'bg-success'); nrPW = 0; }   
+    }
+    if(!nrFLN && !nrAddress && !nrEmail && !nrPhone && !nrPW)
+    {
+      stvoriPorukicu('You have successfully created an account :)', 1, 5)
+      $('#modalLogin').modal('hide');
+    }
+}
+
+
+
+//================================END REGISTER FORM===================================//
+//===================================CORRECT MESSAGE===================================//
+
+var porukicaBox = document.getElementById('porukica')
+var porukicaText = document.getElementById('uspesnoText')
+
+function stvoriPorukicu(tekstUPorukici, tip, time) {
+    porukicaText.textContent = tekstUPorukici;
+    if(tip == 1) { porukicaBox.classList.remove('bg-danger'); porukicaBox.classList.add('bg-success'); }
+    else if(tip == 2) { porukicaBox.classList.remove('bg-success'); porukicaBox.classList.add('bg-danger'); }
+    porukicaBox.classList.remove('d-none')
+    porukicaBox.classList.add('d-block')
+    setTimeout(unistiPorukicu, time*1000);
+}
+function unistiPorukicu(){
+    $(porukicaBox).slideUp(1000, function(){    
+        porukicaBox.classList.remove('d-block')
+        porukicaBox.classList.add('d-none')
+    });
+}
+
+//================================END CORRECT MESSAGE=================================//
