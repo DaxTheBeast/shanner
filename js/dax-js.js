@@ -457,8 +457,8 @@ var PWLabelLogin = document.getElementById('PWLabelLogin')
 
 LoginSubmit.addEventListener('click', proveraL)
 
+var nrEmailLogin, nrPWLogin;
 function proveraL(){
-  var nrEmailLogin, nrPWLogin;
 
   if(!reEmail.test(emailLogin.value))
   {
@@ -467,16 +467,14 @@ function proveraL(){
 
   if(!rePassword.test(passwordLogin.value))
   {
-    passwordLogin.classList.remove('border-success'); passwordLogin.classList.add('border-danger')
-    PWLabelLogin.classList.remove('text-success'); PWLabelLogin.classList.add('text-danger', 'fw-bold'); nrPWLogin = 1;
+    PWLabelLogin.classList.remove('d-none'); PWLabelLogin.classList.add('d-block'); nrPWLogin = 1;
   } else { 
-    PWLabelLogin.classList.remove('text-danger', 'fw-bold'); PWLabelLogin.classList.add('text-success'); 
-    passwordLogin.classList.remove('border-danger'); passwordLogin.classList.add('border-success'); nrPWLogin = 0; }
+    PWLabelLogin.classList.remove('d-block'); PWLabelLogin.classList.add('d-none'); nrPWLogin = 0; }
 
     if(!nrEmailLogin && !nrPWLogin)
     {
       stvoriPorukicu('You have successfully logged in :)', 1, 5)
-      $('#modalregister').modal('hide');
+      $('#modallogin').modal('hide'); 
     }
 }
 
@@ -559,9 +557,10 @@ function proveraRE(){
     if(!nrFLN && !nrAddress && !nrEmail && !nrPhone && !nrPW)
     {
       stvoriPorukicu('You have successfully created an account :)', 1, 5)
-      $('#modalLogin').modal('hide');
+      $('#modalregister').modal('hide');
     }
 }
+
 
 
 
