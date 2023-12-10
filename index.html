@@ -163,6 +163,38 @@
   <div id="porukica" class="w-100 text-center d-none">
     <p id="uspesnoText" class="text-black my-2"></p>
   </div>
+  <!-- modal za cart shop -->
+  <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5">Cart</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="shopping-cart">
+            <div class="shopping-cart-content">
+              <!-- cart-list -->
+              <div class="mini-cart-total d-flex justify-content-between py-4">
+                <span class="fs-6">Subtotal:</span>
+                <span class="special-price-code">
+                  <span class="price-amount amount fs-6" style="opacity: 1;">
+                    <bdi>
+                      <span class="price-currency-symbol">$</span>0.00 </bdi>
+                  </span>
+                </span>
+              </div>
+              <div class="modal-footer my-4 justify-content-center">
+                <button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button>
+                <button type="button" id="checkOutButton"
+                  class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- quick view MODAL -->
   <div class="modal fade" id="modaltoggle" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">
@@ -364,10 +396,7 @@
           <div class="col">
             <ul class="d-flex justify-content-end gap-3 list-unstyled m-0">
               <li>
-                <a href="#">Contact</a>
-              </li>
-              <li>
-                <a href="#">Cart</a>
+                <a href="#footer">Contact</a>
               </li>
               <li>
                   <a href="login" data-bs-toggle="modal" data-bs-target="#modallogin" class="border-0">
@@ -447,9 +476,6 @@
             <!--<div class="btn-wrap">
               <a href="#" class="btn btn-black btn-medium text-uppercase hvr-sweep-to-right">Email me</a>
             </div>-->
-            <div class="example">
-              <div id="flipdown" class="flipdown"></div>
-            </div>
           </div>
         </div>
       </div>

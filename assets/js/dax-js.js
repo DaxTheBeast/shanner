@@ -597,3 +597,9 @@ function unistiPorukicu(){
 }
 
 //================================END CORRECT MESSAGE=================================//
+
+var checkOutButton = document.getElementById('checkOutButton')
+checkOutButton.addEventListener('click', f => {
+  $('#modallong').modal('hide')
+  stvoriPorukicu('Success', 1, 5)
+})
