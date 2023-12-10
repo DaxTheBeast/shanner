@@ -1727,6 +1727,11 @@ a.text-hover:focus:after {
   }
 }
 
+.prvih1{
+  font-size: 1em !important;
+  display: inline;
+}
+
 /*Timer*/
 
 .example {
